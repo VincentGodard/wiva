@@ -16,8 +16,8 @@ return(tmp4)
 
 
 get_st_values <-function(pts,st){
-for (i in 1:length(pts)){
 df_st = as.data.frame(st,xy=T)
+for (i in 1:length(pts)){
 pt = as.data.frame(geom(pts[i]))
 df_st$d = sqrt((pt$x-df_st$x)^2+(pt$y-df_st$y)^2)
 df_st_min = df_st[which.min(df_st$d),]
