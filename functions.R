@@ -15,8 +15,7 @@ return(tmp4)
 }
 
 
-get_st_values <-function(pts,st){
-df_st = as.data.frame(st,xy=T)
+get_st_values <-function(pts,df_st){
 for (i in 1:length(pts)){
 pt = as.data.frame(geom(pts[i]))
 df_st$d = sqrt((pt$x-df_st$x)^2+(pt$y-df_st$y)^2)
@@ -24,7 +23,6 @@ df_st_min = df_st[which.min(df_st$d),]
 df_st_min$i = i
 if(i==1){df_st_pts=df_st_min}else{df_st_pts=rbind(df_st_pts,df_st_min)}
 }
-df_st_pts$area = df_st_pts$acc*res(st)[1]*res(st)[2]
 colnames(df_st_pts)[which(names(df_st_pts) == "x")] <- "x_st"
 colnames(df_st_pts)[which(names(df_st_pts) == "y")] <- "y_st"
 tmp2 = cbind(as.data.frame(pts),df_st_pts)
